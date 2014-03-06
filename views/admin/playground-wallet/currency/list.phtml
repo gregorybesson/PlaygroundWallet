@@ -1,0 +1,32 @@
+<?php $this->plugin('translate')->setTranslatorTextDomain('playgroundwallet');// Pour le texte ?>
+<ul class="liste-buttons">
+    <li class="btn-admin"><a href="<?php echo $this->url('admin/wallet/currency/add'); ?>"><?php echo $this->translate('Add a currency'); ?></a></li>
+</ul>
+<h2><?php echo $this->translate('Currencies') ?></h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th><?php echo $this->translate('Name') ?></th>
+            <th><?php echo $this->translate('Symbol') ?></th>
+            <th><?php echo $this->translate('Icon') ?></th>
+            <td><?php echo $this->translate('Actions') ?></td>
+        </tr>
+    </thead>
+    <tbody>
+    <?php foreach($this->currencies as $currency):?>
+        <tr>
+            <td><?php echo $currency->getName(); ?></td>
+            <td><?php echo $currency->getSymbol(); ?></td>
+            <td><?php if ( $currency->getIcon() ) { ?><img width="32" src="/<?php echo $currency->getIcon(); ?>" /><?php } ?></td>
+            <td>
+                <a href='<?php echo $this->url('admin/wallet/currency/edit', array('id' => $currency->getId())) ?>'><?php echo $this->translate('Edit'); ?></a> | 
+                <a href='<?php echo $this->url('admin/wallet/currency/remove', array('id' => $currency->getId())) ?>'><?php echo $this->translate('Delete'); ?></a>
+            </td>
+        </tr>
+    <?php endforeach;?>
+    </tbody>
+</table>
+<ul class="liste-buttons">
+    <li class="btn-admin"><a href="<?php echo $this->url('admin/wallet/currency/add'); ?>"><?php echo $this->translate('Add a currency'); ?></a></li>
+</ul>
+

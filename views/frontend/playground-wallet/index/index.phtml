@@ -1,0 +1,13 @@
+<h1><?php echo $this->translate('My wallets'); ?></h1>
+<ul>
+<?php foreach( $wallets as $wallet ) { ?>
+    <li>
+        <?php echo $wallet->getName(); ?>
+        <ul>
+        <?php foreach( $wallet->getBalances() as $balance ) { ?>
+            <li><?php echo $this->currencyFormat( $balance->getAmount(), $balance->getCurrency()->getSymbol() ) ?></li>
+        <?php } ?>
+        </ul>
+   </li>
+<?php } ?>
+</ul>

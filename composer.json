@@ -1,0 +1,31 @@
+{
+	"name" : "playground/wallet",
+	"description" : "Wallet module",
+	"type" : "library",
+	"authors" : [{
+			"name" : "Alexandre Beaurain",
+			"email" : "alexandre.beaurain@adfab.fr",
+			"homepage" : "http://www.playground.gg"
+		}
+	],
+	"keywords" : [
+		"zf2",
+		"playground",
+		"currency",
+		"wallet"
+	],
+	"homepage" : "https://github.com/gregorybesson/PlaygroundWallet",
+	"license" : "BSD-3-Clause",
+	"minimum-stability" : "dev",
+	"require" : {
+		"playground/core" : "dev-master"
+	},
+	"require-dev" : {
+		"phpunit/phpunit" : "3.7.*"
+	},
+	"autoload" : {
+		"psr-0" : {
+			"PlaygroundWallet" : "src/"
+		}
+	}
+}

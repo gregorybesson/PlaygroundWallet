@@ -1,0 +1,51 @@
+<?php $this->plugin('translate')->setTranslatorTextDomain('playgroundwallet');// Pour le texte ?>
+    <?php
+    $form = $this->form;
+    $form->prepare();
+    ?>
+
+<?php echo $this->form()->openTag($form) ?>
+        <fieldset>
+            <div class="label-input">
+                <?php echo $this->formHidden($form->get('id')); ?>
+            </div>
+            <div class="label-input">
+                <?php echo $this->formLabel($form->get('symbol')); ?>
+                <?php echo $this->formInput($form->get('symbol')); ?>
+            </div>
+            <div class="label-input">
+                <?php echo $this->formLabel($form->get('name')); ?>
+                <?php echo $this->formInput($form->get('name')); ?>
+            </div>
+            <div class="label-input">
+                <?php echo $this->formLabel($form->get('icon')); ?>
+                <?php echo $this->formInput($form->get('icon')); ?>
+<div id="elfinder" style="display: none;"></div>
+<link rel="stylesheet" type="text/css" media="screen" href="/lib/js/elfinder/css/elfinder.min.css">
+<script type="text/javascript" src="/lib/js/elfinder/js/elfinder.min.js"></script>
+<script type="text/javascript" charset="utf-8">
+jQuery(document).ready(function() {
+	var icon = jQuery('input[name="icon"]');
+	var elf = jQuery('#elfinder');
+	icon.bind('focus', function() {
+		elf.show();
+	});
+	elf.elfinder({
+		url : '/elfinder/connector',
+		getFileCallback: function(media,instance) {
+			icon.val(media.path);
+			jQuery('img',icon.parent()).attr('src','/'+media.path);
+			elf.hide();
+		}
+	}).elfinder('instance');
+});
+</script>
+                <?php if($form->get('icon')->getValue() != ''):?>
+                    <img width="64" src="<?php echo $this->basePath($form->get('icon')->getValue()); ?>" />
+                <?php endif;?>
+            </div>
+        </fieldset>
+
+
+    <?php echo $this->formButton($form->get('submit')); ?>
+<?php echo $this->form()->closeTag() ?>

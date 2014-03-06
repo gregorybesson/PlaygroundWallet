@@ -1,0 +1,31 @@
+<?php $this->plugin('translate')->setTranslatorTextDomain('playgroundwallet');// Pour le texte ?>
+<h2><?php echo $this->translate('Wallets') ?></h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th><?php echo $this->translate('Name') ?></th>
+            <th><?php echo $this->translate('Amount') ?></th>
+            <th><?php echo $this->translate('First name') ?></th>
+            <th><?php echo $this->translate('Last name') ?></th>
+            <th><?php echo $this->translate('Email') ?></th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php foreach($this->wallets as $wallet):?>
+        <tr>
+            <td><?php echo $wallet->getName(); ?></td>
+            <td><ul><?php foreach( $wallet->getBalances() as $balance ) { ?>
+               <li><?php echo $this->currencyFormat( $balance->getAmount(), $balance->getCurrency()->getSymbol()) ?></li>
+            <?php } ?></ul></td>
+            <?php $user = $wallet->getUser() ?>
+            <td><?php echo $user ? $user->getFirstname() : ''; ?></td>
+            <td><?php echo $user ? $user->getLastname() : ''; ?></td>
+            <td><?php echo $user ? $user->getEmail() : ''; ?></td>
+        </tr>
+    <?php endforeach;?>
+    </tbody>
+</table>
+
+<?php echo (count($this->wallets)>1)?$this->paginationControl($this->wallets, 'Sliding', 'playground-wallet/wallet/pagination_wallet.phtml'):''; ?>
+
+

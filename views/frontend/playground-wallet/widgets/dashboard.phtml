@@ -1,0 +1,5 @@
+<ul>
+<?php foreach( $this->balances as $currencySymbol => $balance ) { ?>
+    <li><?php echo $this->currencyFormat($balance, $currencySymbol) ?></li>
+<?php } ?>
+</ul>

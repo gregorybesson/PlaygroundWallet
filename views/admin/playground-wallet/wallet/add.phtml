@@ -1,0 +1,25 @@
+<?php $this->plugin('translate')->setTranslatorTextDomain('playgroundwallet');// Pour le texte ?>
+    <?php
+    $form = $this->form;
+    $form->prepare();
+    ?>
+
+<?php echo $this->form()->openTag($form) ?>
+    <fieldset>
+        <div class="label-input">
+            <?php echo $this->formLabel($form->get('email')); ?>
+            <?php echo $this->formInput($form->get('email')); ?>
+        </div>
+        <div class="label-input">
+            <?php echo $this->formLabel($form->get('amount')); ?>
+            <?php echo $this->formInput($form->get('amount')); ?>
+        </div>
+        <div class="label-input">
+            <?php echo $this->formLabel($form->get('currency_id')); ?>
+            <?php echo $this->formSelect($form->get('currency_id')); ?>
+        </div>
+    </fieldset>
+
+
+<?php echo $this->formButton($form->get('submit')); ?>
+<?php echo $this->form()->closeTag() ?>
